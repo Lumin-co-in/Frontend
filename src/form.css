@@ -1,0 +1,141 @@
+header form{
+  background:transparent rgb(21, 18, 18) ;
+}
+#login {
+  margin-top:2rem;
+}
+
+
+.form-container {
+  margin:8rem 0;
+  padding: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:40vh;
+}
+
+
+
+
+.center-section {
+  opacity: 1;
+  transform: translateY(50px);
+  transition: opacity 1s, transform 1s;
+  
+}
+
+.form-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border: 0.2rem solid rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  color: black;
+  visibility: visible;
+}
+
+.form-card form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.login-form .cta-btn:hover{
+    color:rgb(118, 12, 185);
+    font-weight:600;
+    border:0.1rem solid rgb(118, 12, 185);
+    background: transparent;
+    
+}
+
+.input-container {
+  width: 100%;
+  height:80%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.input-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 0.25rem;
+}
+
+.text-inputs {
+  width: 100%;
+  background-color: transparent;
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 0.1rem solid  rgb(111, 110, 112);
+  font-size: 1rem;
+  outline: 0;
+  transition: border-color 0.1s linear;
+}
+
+.text-inputs:focus {
+  border-bottom: 0.1rem solid  rgb(118, 12, 185);
+}
+
+.select-input {
+  width: 30%;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 0.05rem solid  rgb(118, 12, 185);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.select-input option {
+  border-radius: 0 0 0.1rem 0.1rem;
+}
+
+.radio-btn-container {
+  width: 30%;
+}
+
+.radioLabel {
+  width: 100%;
+  border: 0.05rem solid rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.1s linear;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked + .radioLabel {
+  background-color: white;
+  color: #1b1717;
+  border-color: rgb(118, 12, 185);
+}
+
+.form-card p {
+  color:rgb(118, 12, 185);
+}
+
+.link-underline {
+  text-decoration: underline;
+}
+

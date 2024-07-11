@@ -1,0 +1,30 @@
+.menu-toggle {
+  position: relative;
+  width: 2rem;
+  height: 1rem;
+}
+
+.button-bar {
+  width: 2rem;
+  height: 0.1rem;
+  background-color: rgb(24, 24, 24);
+  position: absolute;
+  color:black;
+}
+
+.open .top {
+  top: 0;
+}
+.open .bottom {
+  bottom: 0;
+}
+
+.close .top {
+  transform-origin: center;
+  transform: rotate(-45deg) ;
+}
+
+.close .bottom {
+  transform-origin: center;
+  transform: rotate(45deg) ;
+}

@@ -1,0 +1,53 @@
+.accordion-container {
+  background-color: rgba(164, 164, 164, 0.1);
+}
+
+.accordion-container:not(:last-child) {
+  border-bottom: 0.05rem solid rgba(0, 0, 0, 0.3);
+}
+.accordion-title {
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: color 0.1s linear;
+}
+
+.accordion-title > h3 {
+  font-weight: 700;
+}
+
+.accordion-title > svg {
+  transform: rotate(0);
+  transition: transform 0.2s linear;
+}
+
+.open > .accordion-title {
+  color: var(--primary-green);
+}
+
+.open > .accordion-title > svg {
+  transform: rotate(90deg);
+}
+
+.open .accordion-content {
+  display: block;
+}
+
+.close .accordion-content {
+  display: none;
+}
+
+.accordion-content {
+  padding: 0rem 3rem 1rem;
+}
+
+ul {
+  margin-left: 1rem;
+}
+
+.subtopic > ul > :first-child {
+  list-style-type: none;
+}
+
+.subtopic > ul > li:not(:first-child) {
+  margin-left: 1rem;
+}
