@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 
 // Create an instance of Axios
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/api", // Adjust this to match your server's base URL
-  withCredentials: true, // This is the important part, which includes credentials in requests
+  baseURL: 'https://lumin-backend-v1.onrender.com/api',
+  withCredentials: true,
 });
 
 export default axiosInstance;

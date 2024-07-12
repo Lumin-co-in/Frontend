@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios"; // Import Axios
-import "../form.css";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from '../axios'; // Import Axios
+import '../form.css';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     email: '',
-    passwd: ''
+    passwd: '',
   });
 
   const [error, setError] = useState(null);
@@ -17,7 +17,7 @@ const LoginPage = () => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -27,17 +27,12 @@ const LoginPage = () => {
     setSuccess(null);
 
     try {
-      const response = await axios.post('https://lumin-backend-v1.onrender.com/api/auth/login', {
+      const response = await axios.post('/auth/login', {
         email: formData.email,
-        password: formData.passwd
+        password: formData.passwd,
       });
       console.log('Login successful', response.data);
       setSuccess('Login successful');
-
-      // Store the token in local storage
-      const token = response.data.token;
-      localStorage.setItem('authToken', token);
-      console.log('Token stored:', token); // Debug: Check if the token is stored
 
       // Redirect or navigate to another page after successful login
       setTimeout(() => {
@@ -46,7 +41,9 @@ const LoginPage = () => {
     } catch (error) {
       console.error('Login error:', error);
       if (error.response) {
-        setError(`Login failed: ${error.response.status} - ${error.response.data.message || error.response.statusText}`);
+        setError(
+          `Login failed: ${error.response.status} - ${error.response.data.message || error.response.statusText}`
+        );
       } else if (error.request) {
         setError('Server did not respond. Please try again later.');
       } else {
@@ -81,15 +78,11 @@ const LoginPage = () => {
           />
           {error && <p className="error-message">{error}</p>}
           {success && <p className="success-message">{success}</p>}
-          <input
-            type="submit"
-            value="Login"
-            className="cta-btn"
-          />
+          <input type="submit" value="Login" className="cta-btn" />
         </form>
 
         <p>
-          Don't have an account?{" "}
+          Don't have an account?{' '}
           <Link to="/register" className="link-underline">
             Register here
           </Link>
