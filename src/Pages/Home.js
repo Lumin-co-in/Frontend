@@ -114,16 +114,19 @@ const Home = () => {
             <h2 className="term-title text-5xl font-bold p-2">Term-2</h2>
             <div className="flex justify-around">
               {courses &&
-                courses.map((course) => (
-                  <CourseCard
-                    key={course._id}
-                    courseName={course.title}
-                    courseImage={course.img}
-                    courseId={course.courseId}
-                    instructorName={course.instructor.name}
-                    term={course.term}
-                  />
-                ))}
+                courses.map(
+                  (course) =>
+                    course.term === '2' && (
+                      <CourseCard
+                        key={course._id}
+                        courseName={course.title}
+                        courseImage={course.img}
+                        courseId={course.courseId}
+                        instructorName={course.instructor.name}
+                        term={course.term}
+                      />
+                    )
+                )}
             </div>
           </div>
           <div className="course-card-container">
