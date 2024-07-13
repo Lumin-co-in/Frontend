@@ -1,15 +1,15 @@
-import { useState } from "react";
-import axios from "../axios.js";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import axios from '../axios.js';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    dateOfBirth: "",
-    gender: "",
-    contactNumber: "",
+    username: '',
+    email: '',
+    password: '',
+    dateOfBirth: '',
+    gender: '',
+    contactNumber: '',
   });
 
   const navigate = useNavigate();
@@ -25,14 +25,14 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://lumin-backend-v1.onrender.com/api/auth/register", formData);
+      const response = await axios.post('/auth/register', formData);
       console.log(response.data);
       // Handle success
       setTimeout(() => {
         navigate('/userprofilepage');
       }, 2000);
     } catch (error) {
-      console.error("There was an error registering the user!", error);
+      console.error('There was an error registering the user!', error);
       // Handle error
     }
   };
@@ -43,7 +43,10 @@ const RegisterForm = () => {
         <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="username" className="block text-gray-700 font-bold mb-2">
+            <label
+              htmlFor="username"
+              className="block text-gray-700 font-bold mb-2"
+            >
               Username
             </label>
             <input
@@ -57,7 +60,10 @@ const RegisterForm = () => {
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
+            <label
+              htmlFor="email"
+              className="block text-gray-700 font-bold mb-2"
+            >
               Email
             </label>
             <input
@@ -71,7 +77,10 @@ const RegisterForm = () => {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-gray-700 font-bold mb-2">
+            <label
+              htmlFor="password"
+              className="block text-gray-700 font-bold mb-2"
+            >
               Password
             </label>
             <input
@@ -85,7 +94,10 @@ const RegisterForm = () => {
             />
           </div>
           <div>
-            <label htmlFor="dateOfBirth" className="block text-gray-700 font-bold mb-2">
+            <label
+              htmlFor="dateOfBirth"
+              className="block text-gray-700 font-bold mb-2"
+            >
               Date of Birth
             </label>
             <input
@@ -99,7 +111,10 @@ const RegisterForm = () => {
             />
           </div>
           <div>
-            <label htmlFor="gender" className="block text-gray-700 font-bold mb-2">
+            <label
+              htmlFor="gender"
+              className="block text-gray-700 font-bold mb-2"
+            >
               Gender
             </label>
             <select
@@ -117,7 +132,10 @@ const RegisterForm = () => {
             </select>
           </div>
           <div>
-            <label htmlFor="contactNumber" className="block text-gray-700 font-bold mb-2">
+            <label
+              htmlFor="contactNumber"
+              className="block text-gray-700 font-bold mb-2"
+            >
               Contact Number
             </label>
             <input

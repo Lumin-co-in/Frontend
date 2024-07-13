@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [loginData, setLoginData] = useState({
     email: '',
-    password: ''
+    password: '',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -15,7 +15,7 @@ const Login = () => {
     setLoginData({ ...loginData, [name]: value });
   };
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await axios.post('https://lumin-backend-v1.onrender.com/api/auth/login', loginData);
+      const response = await axios.post('/auth/login', loginData);
       // Assuming the backend sends back a JWT token on successful login
       localStorage.setItem('token', response.data.token);
       setTimeout(() => {
@@ -42,7 +42,9 @@ const Login = () => {
       {error && <div className="text-red-500 mb-4">{error}</div>}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Email
+          </label>
           <input
             type="email"
             name="email"
@@ -52,7 +54,9 @@ const Login = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Password
+          </label>
           <input
             type="password"
             name="password"
