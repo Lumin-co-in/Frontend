@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import CourseCard from "../Components/CourseCard";
-import { courses ,term} from "../data";
+import CourseCard from '../Components/CourseCard';
 import examImage from '../Assets/exam.jpg';
 import videoi from '../Assets/video.jpg';
 import notes1 from '../Assets/notes1.jpg';
 import cases from '../Assets/case.jpg';
 import notes2 from '../Assets/notes2.jpg';
+import axios from '../axios';
 
 const Home = () => {
   // Filter courses based on terms 2, 4, 6
-  
+  const [courses, setCourses] = useState(null);
+  useEffect(() => {
+    const getCoursesData = async () => {
+      const res = await axios.get('/user/courses/all');
+      const courseData = res.data;
+      setCourses(courseData);
+    };
+    getCoursesData();
+  }, []);
 
   return (
     <>
@@ -21,14 +29,16 @@ const Home = () => {
               Welcome to <span className="comp-name">LUMIN</span>
             </h2>
             <p className="container-text">
-              We offer semester exam preparation guides for LL.B. students at Delhi
-              University. We simplify the exam preparation journey by offering
-              interactive video lectures specifically tailored to exams, previous
-              year question papers, concise case summaries, and lecture notes.
+              We offer semester exam preparation guides for LL.B. students at
+              Delhi University. We simplify the exam preparation journey by
+              offering interactive video lectures specifically tailored to
+              exams, previous year question papers, concise case summaries, and
+              lecture notes.
               <br /> <br />
-              We provide top-tier education in an accessible format, ensuring that
-              learning is enriching and enjoyable. Our dedicated instructors are
-              deeply committed to empowering students to thrive academically.
+              We provide top-tier education in an accessible format, ensuring
+              that learning is enriching and enjoyable. Our dedicated
+              instructors are deeply committed to empowering students to thrive
+              academically.
             </p>
             <div className="c-button">
               <Link to="/courses">
@@ -55,8 +65,8 @@ const Home = () => {
             <section className="right-sec">
               <h3 className="slab-title">Video Lectures</h3>
               <p className="slab-text">
-                Video lectures designed specifically for LLB semester exams to help
-                students excel academically.
+                Video lectures designed specifically for LLB semester exams to
+                help students excel academically.
               </p>
             </section>
           </article>
@@ -97,21 +107,65 @@ const Home = () => {
       </section>
 
       <section className="center-section" id="courses">
-        <h2 className="section-title">Our Courses</h2>
-        {courses.map((c) => {
-          return (
-            <div className="course-container" key={c.id} id={`term-${c.id}`}>
-              <h2 className="course-term">{c.term} Term</h2>
-              <div className="course-cards-container">
-                {c.courses.map((e) => {
-                  return <CourseCard key={e.id} course={e} term={c.id} />;
-                })}
-              </div>
+        <div>
+          <h2 className="section-title">Our Courses</h2>
+          {/* <pre>{JSON.stringify(courses, null, 2)}</pre> */}
+          <div className="course-card-container">
+            <h2 className="term-title text-5xl font-bold p-2">Term-2</h2>
+            <div className="flex justify-around">
+              {courses &&
+                courses.map((course) => (
+                  <CourseCard
+                    key={course._id}
+                    courseName={course.title}
+                    courseImage={course.img}
+                    courseId={course.courseId}
+                    instructorName={course.instructor.name}
+                    term={course.term}
+                  />
+                ))}
             </div>
-          );
-        })}
+          </div>
+          <div className="course-card-container">
+            <h2 className="term-title text-5xl font-bold p-2">Term-4</h2>
+            <div className="flex justify-around">
+              {courses &&
+                courses.map(
+                  (course) =>
+                    course.term === '4' && (
+                      <CourseCard
+                        key={course._id}
+                        courseName={course.title}
+                        courseImage={course.img}
+                        courseId={course.courseId}
+                        instructorName={course.instructor.name}
+                        term={course.term}
+                      />
+                    )
+                )}
+            </div>
+          </div>
+          <div className="course-card-container">
+            <h2 className="term-title text-5xl font-bold p-2">Term-6</h2>
+            <div className="flex justify-around">
+              {courses &&
+                courses.map(
+                  (course) =>
+                    course.term === '6' && (
+                      <CourseCard
+                        key={course._id}
+                        courseName={course.title}
+                        courseImage={course.img}
+                        courseId={course.courseId}
+                        instructorName={course.instructor.name}
+                        term={course.term}
+                      />
+                    )
+                )}
+            </div>
+          </div>
+        </div>
       </section>
-  
     </>
   );
 };
