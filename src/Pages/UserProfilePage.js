@@ -14,7 +14,7 @@ function UserInfo() {
         console.log('user info', response.data);
         setUserData(response.data);
 
-        const response2 = await axios.get('/api/user/courses/purchased');
+        const response2 = await axios.get('/user/courses/purchased');
         console.log('courses enrolled', response2.data);
         setCourses(response2.data);
       } catch (error) {
@@ -22,7 +22,7 @@ function UserInfo() {
       }
     };
     fetchUserInfo();
-  }, [userData,courses]);
+  }, []);
 
   return (
     <div className='container1'>
@@ -46,7 +46,15 @@ function UserInfo() {
           </div>
           <div className='profile-item'>
             <p className='profile-label'>Courses Enrolled</p>
-            <p className='profile-value'>{!courses ? "No courses enrolled" : courses}</p>
+            <p className='profile-value'>
+            {courses.length === 0 ? "No courses enrolled" : (
+                <ul>
+                  {courses.map(course => (
+                    <li key={course.id}>{course.title}</li>
+                  ))}
+                </ul>
+              )}
+            </p>
           </div>
         </div>
       </div>

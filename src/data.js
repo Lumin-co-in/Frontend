@@ -395,7 +395,7 @@ const courses = [
       {
         id: "lb204",
         courseName: "Property Law (LB-204)",
-        instructor: "Ada Wallace",
+        instructorName: "Ada Wallace",
         instructorID: "0",
         price: "299.99",
         img: require("./Assets/Images/course-card-bg.png"),
