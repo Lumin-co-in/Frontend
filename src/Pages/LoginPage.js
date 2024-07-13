@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from '../axios'; // Import Axios
 import '../form.css';
+import { useGlobalContext } from '../context';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,8 @@ const LoginPage = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const navigate = useNavigate();
+
+  const { setAuthStatus } = useGlobalContext();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,6 +36,8 @@ const LoginPage = () => {
       });
       console.log('Login successful', response.data);
       setSuccess('Login successful');
+
+      setAuthStatus(true); // Set auth status to true
 
       // Redirect or navigate to another page after successful login
       setTimeout(() => {
