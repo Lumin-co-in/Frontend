@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import CourseCard from '../Components/CourseCard';
 import examImage from '../Assets/exam.jpg';
 import videoi from '../Assets/video.jpg';
@@ -41,9 +40,9 @@ const Home = () => {
               academically.
             </p>
             <div className="c-button">
-              <Link to="/courses">
+              <a href="#courses">
                 <button className="course-btn">Our Courses</button>
-              </Link>
+              </a>
             </div>
           </div>
           <section className="left-section">

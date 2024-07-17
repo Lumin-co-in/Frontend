@@ -1,4 +1,6 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
+import "../index.css";
 
 const CourseCard = ({
   courseId,
@@ -13,7 +15,7 @@ const CourseCard = ({
       <div className="card-text">
         <h4 className="course-name">{courseName}</h4>
         <p className="instructor-name">{instructorName}</p>
-        <Link to={{ pathname: `/user/course/${term}` }} className="cta-btn">
+        <Link to={{ pathname: `/courses/${term}/${courseId}` }} className="cta-btn">
           Visit Course
         </Link>
       </div>

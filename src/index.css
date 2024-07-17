@@ -53,6 +53,12 @@
   gap: 2rem;
   font-size: 1.3rem;
 }
+
+.nav-link {
+  color: #fff;
+  margin:0 1.5rem;
+}
+
 .nav-link:hover {
   color: rgb(125, 22, 222);
 }
@@ -79,7 +85,7 @@
     rgba(91, 44, 133, 0.87) 0%,
     rgba(155, 33, 141, 0.72) 83.6%
   );
-  border: none;
+  border: 2px solid rgba(151, 23, 136, 0.72);
   border-radius: 30px;
   color: rgb(255, 255, 255);
 }
@@ -145,9 +151,10 @@
 }
 
 .course-btn {
-  margin-top: 1rem;
+  margin: 0.5rem 0 1.5rem 0;
   font-size: 1rem;
   padding: 1rem;
+  width:fit-content;
   background-image: radial-gradient(
     circle farthest-corner at 3.2% 49.6%,
     rgba(88, 32, 137, 0.87) 0%,
@@ -185,6 +192,10 @@
   text-align: center;
 }
 
+.term-title{
+  margin: 2rem 0 2rem 0;
+}
+
 .cta-btn {
   width: fit-content;
   display: flex;
@@ -200,7 +211,7 @@
   padding: 1rem 2rem;
   font-weight: 600;
   border-radius: 12rem;
-  border: 0;
+  border: 2px solid rgba(151, 23, 136, 0.72);
   outline: none;
   cursor: pointer;
   transition:
@@ -507,6 +518,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+
+}
+
+.bio{
+  font-weight:800;
 }
 
 .course-intro {
@@ -769,6 +785,16 @@ footer .social-media-link:hover {
   font-weight: 600;
 }
 
+
+/* admin dashboard */
+.admin-dashboard{
+  display: flex;
+  flex-direction: row;
+  border: 0.125rem solid rgb(88, 1, 170);
+  margin: 10rem 10rem 5rem;
+  box-shadow: 0 0 1rem rgb(134, 129, 129);
+}
+
 /* user profile page */
 .container1 {
   display: flex;
@@ -852,6 +878,119 @@ footer .social-media-link:hover {
   margin: 1rem 0 1rem 1.5rem;
 }
 
+/* //paymentform */
+
+
+.container {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 600px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.payment-section, .form-section {
+  padding: 20px;
+}
+
+.payment-section {
+  background-color: #fcfbfb;
+  text-align: center;
+  width: 40%;
+  margin-top:1rem;
+  border: 1px solid #9a9696;
+}
+
+.qr-code {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.upi-id {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.instructions {
+  color: red;
+  font-size: 12px;
+  margin-top: 10px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-section {
+  width: 60%;
+}
+
+.course-header,.course-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: -4vh;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.course-header{
+  color: rgb(62, 155, 111);
+}
+
+.course-header h2 {
+  margin: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input[type="email"],
+input[type="tel"],
+input[type="text"] {
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-bottom: 1px solid #696969;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-right: 4vh;
+  font-size:medium;
+}
+
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="text"]:focus {
+  outline: 1px solid green;
+}
+
+button {
+  padding: 10px;
+  margin-top: 20px;
+  border: none;
+  background-color: rgb(62, 155, 111);
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 16vh;
+  height: 7vh;
+}
+
+button:hover {
+  background-color: rgb(49, 116, 84);
+}
+
+.course-code,
+.course-name {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+
 @media screen and (max-width: 1080px) {
   html {
     font-size: 14px;
@@ -887,8 +1026,10 @@ footer .social-media-link:hover {
     background-color: white;
     border-bottom: 0.05rem solid gray;
   }
+  
   header .nav-link {
     font-size: 1.5rem;
+    color:black;
   }
   .menu-open {
     transform: translateX(0);

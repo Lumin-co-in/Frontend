@@ -35,7 +35,7 @@ const Header = () => {
             User Profile
           </Link>
         ) : (
-          <Link to="/login" className="nav-link">
+          <Link to="/login" className="nav-link login-but">
             Login
           </Link>
         )}

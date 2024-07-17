@@ -1,5 +1,4 @@
 import React, { useState, useEffect }  from "react";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./Components/Header";
@@ -11,7 +10,10 @@ import AboutUs from "./Pages/AboutUs";
 import CoursePage from "./Pages/CoursePage";
 import RegisterPage from "./Pages/RegisterPage";
 import UserProfilePage from "./Pages/UserProfilePage";
-
+import PaymentForm from "./Components/PaymentForm";
+import AdminDashboard from "./Pages/AdminDashboard";
+import PrivateRoute from "./Components/privateRoute";
+import { AuthProvider } from './context/AuthContext';
 
 const App = () => {
 
@@ -23,9 +25,11 @@ const App = () => {
       .then((data) => setCourses(data))
       .catch((error) => console.error('Error fetching course data:', error));
   }, []);
+  
 
 
   return (
+    <AuthProvider> 
     <div className="app-wrapper">
       <Router>
         <Header />
@@ -36,7 +40,7 @@ const App = () => {
             <Route exact path="/register" element={<RegisterPage/>} />
             <Route exact path="/aboutus" element={<AboutUs />} />
             <Route exact path="/#product" element={<Home />} />
-            <Route path="/courses/:term/:courseId" component={CoursePage} />
+            <Route path="/courses/:term/:courseId" element={<CoursePage/>} />
         <Route path="/" element={
           <div className="course-list">
             {courses.map((course) => (
@@ -48,13 +52,18 @@ const App = () => {
             ))}
           </div>
         } />
+            <Route exact path="/payment" element={<PaymentForm/>} />
         
             <Route exact path="/userprofilePage" element={<UserProfilePage />} />
+            <Route path="/admin" element={<PrivateRoute />}>
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            </Route>
           </Routes>
         </main>
         <Footer />
       </Router>
     </div>
+    </AuthProvider> 
   );
 };
 

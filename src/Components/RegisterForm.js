@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from '../axios.js';
 import { useNavigate } from 'react-router-dom';
+import '../form.css';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -38,9 +39,9 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center mt-20 justify-center bg-gray-100 form-card">
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center login-form">Register</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label
@@ -73,7 +74,7 @@ const RegisterForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring focus:border-blue-300"
+              className="w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring focus:border-blue-300 "
             />
           </div>
           <div>
