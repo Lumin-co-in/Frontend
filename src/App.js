@@ -12,7 +12,7 @@ import RegisterPage from "./Pages/RegisterPage";
 import UserProfilePage from "./Pages/UserProfilePage";
 import PaymentForm from "./Components/PaymentForm";
 import AdminDashboard from "./Pages/AdminDashboard";
-import PrivateRoute from "./Components/privateRoute";
+// import PrivateRoute from "./Components/privateRoute";
 import { AuthProvider } from './context/AuthContext';
 
 const App = () => {
@@ -55,9 +55,9 @@ const App = () => {
             <Route exact path="/payment" element={<PaymentForm/>} />
         
             <Route exact path="/userprofilePage" element={<UserProfilePage />} />
-            <Route path="/admin" element={<PrivateRoute />}>
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            </Route>
+            
+              <Route path="/admin" element={<AdminDashboard />} />
+            
           </Routes>
         </main>
         <Footer />
