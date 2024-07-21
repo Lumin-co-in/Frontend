@@ -301,7 +301,7 @@ input[type="radio"]:checked + .radioLabel {
   }
 
   input{
-    height:2.5rem;
+    height:2rem;
     margin:0.5rem;
   }
   
@@ -344,7 +344,7 @@ input[type="radio"]:checked + .radioLabel {
 
   .register-link {
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     font-size: 1.3rem;
     color: blueviolet;
   }
