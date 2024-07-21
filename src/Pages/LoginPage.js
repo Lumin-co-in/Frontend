@@ -1,20 +1,44 @@
 import React from 'react';
 import { useState } from 'react';
+import axios from '../axios';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import "../index.css"; 
 import img from "../Assets/Images/newlogin.png";
 
 function LoginPage() {
-    const [username, setUsername] = useState("")
-      const [password, setPassword] = useState("");
-  
-    const handleSubmit = (e) => {
-     e.preventDefault();
-      console.log("Username:", username);
-      console.log("Password:", password);
-    };
-  
+  const [loginData, setLoginData] = useState({
+    email: '',
+    password: '',
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setLoginData({ ...loginData, [name]: value });
+  };
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await axios.post('/auth/login', loginData);
+      // Assuming the backend sends back a JWT token on successful login
+      localStorage.setItem('token', response.data.token);
+      setTimeout(() => {
+        navigate('/userprofilepage');
+      }, 2000);
+    } catch (error) {
+      error=setError(error.response?.data?.message || 'Error logging in');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     
@@ -32,13 +56,14 @@ function LoginPage() {
         <form onSubmit={handleSubmit}>
 
           <div className="form-group">
-            <label htmlFor="username">Username or Email</label>
+            <label htmlFor="email"> Email</label>
             <input
               type="text"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter Username or Email"
+              id="email"
+              name="email" 
+              value={loginData.email}
+              onChange={handleChange}
+              placeholder="Enter Email"
               className="form-control"
             />
           </div>
@@ -47,8 +72,9 @@ function LoginPage() {
                   <input
                   type="password"
                   id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  name="password"  
+                  value={loginData.password}
+                  onChange={handleChange}
                   placeholder="Password"
                   className="form-control"
                 />
@@ -56,10 +82,11 @@ function LoginPage() {
                 {/* <a href="#" className="forgot-password">
                 Forgot password?
                 </a> */}
-              <button type="submit" className="btn">
-                LOGIN
+              <button type="submit" className="btn"  disabled={loading}>
+              {loading ? 'Logging in...' : 'Login'}
               </button>
             </form>
+            {error && <div className="error-message">{error}</div>}
             <div className="register-link">
               <span>Don't have an account? </span>
               <Link to="/register" className="link-underline">
