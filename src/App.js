@@ -27,7 +27,7 @@ const App = () => {
 
 
   return (
-     
+    <>
     <div className="app-wrapper">
       <Router>
         <Header />
@@ -61,7 +61,7 @@ const App = () => {
         <Footer />
       </Router>
     </div>
-  
+  </>
   );
 };
 

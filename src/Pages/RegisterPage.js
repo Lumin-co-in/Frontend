@@ -3,7 +3,7 @@ import '../index.css';
 
 const RegisterPage = () => {
   return (
-    <div className="container mx-auto p-10">
+    <div >
       <RegisterForm />
     </div>
   );

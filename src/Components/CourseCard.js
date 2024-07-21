@@ -15,7 +15,7 @@ const CourseCard = ({
       <div className="card-text">
         <h4 className="course-name">{courseName}</h4>
         <p className="instructor-name">{instructorName}</p>
-        <Link to={{ pathname: `/courses/${term}/${courseId}` }} className="cta-btn">
+        <Link to={{ pathname: `/courses/${term}/${courseId}` }} className="cta-btn coursecard">
           Visit Course
         </Link>
       </div>
